@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import ExpensesFilter from "../NewExpense/ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 import ExpensesChart from "./ExpensesChart"
+import { formatDate } from "../../App"
 
 function ExpenseData(props) {
   const [filter, setFilter] = useState("2022");
@@ -11,8 +12,10 @@ function ExpenseData(props) {
     setFilter(selectedYear);
   }
 
+  
+
   const filteredExpenses = props.items.filter(expense => {
-    return expense.date.getFullYear().toString() === filter
+    return formatDate(expense.date).getFullYear().toString() === filter
   })
 
  

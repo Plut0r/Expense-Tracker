@@ -8,6 +8,18 @@ function ExpenseForm(props) {
     enteredDate: "",
   });
 
+  /* useEffect(() => {
+    localStorage.setItem("enteredTitle", JSON.stringify(userInput.enteredTitle));
+  }, [userInput.enteredTitle])
+
+  useEffect(() => {
+    localStorage.setItem("enteredAmount", JSON.stringify(userInput.enteredAmount));
+  }, [userInput.enteredAmount])
+
+  useEffect(() => {
+    localStorage.setItem("enteredDate", JSON.stringify(userInput.enteredDate));
+  }, [userInput.enteredDate]) */
+
   function handleChange(event) {
     const { name, value } = event.target;
     setUserInput((prevState) => ({
