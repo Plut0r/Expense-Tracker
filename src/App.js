@@ -19,32 +19,23 @@ const initialExpenses = [
 ];
 
 function App() {
-  const [expenses, setExpenses] = useState(initialExpenses);
-  const [newExpense, setNewExpense] = useState(JSON.parse(localStorage.getItem('expense')));
+  const [expenses, setExpenses] = useState(JSON.parse(localStorage.getItem('expense')) || initialExpenses);
+
+  useEffect(() => {
+      setExpenses(JSON.parse(localStorage.getItem('expense')));
+  }, []);
+
 
   useEffect(() => {
       localStorage.setItem("expense", JSON.stringify(expenses));
-  });
-
-  /* useEffect(() => {
-      const expense = JSON.parse(localStorage.getItem('expense'))
-      if(expense) {
-        setExpenses(expense)
-      }
-      return () => {
-
-      }
-    }, [expenses])*/
+  }, [expenses]);
 
   function handleAddExpense(expense) {
     //setExpenses(expense)
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
-    console.log(expenses)
-    localStorage.setItem("expense", JSON.stringify(expenses));
-    /*setExpenses(JSON.parse(localStorage.getItem("expense")))*/
-  }
+  };
 
   const deleteExpenseHandler = (expenseId) => {
     setExpenses((prevExpenses) => {
