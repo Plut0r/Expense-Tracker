@@ -19,9 +19,10 @@ const initialExpenses = [
 ];
 
 function App() {
-  const [expenses, setExpenses] = useState(JSON.parse(localStorage.getItem('expense')) || initialExpenses);
+  const [expenses, setExpenses] = useState(initialExpenses || JSON.parse(localStorage.getItem('expense')));
 
   useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('expense'))) return
       setExpenses(JSON.parse(localStorage.getItem('expense')));
   }, []);
 
